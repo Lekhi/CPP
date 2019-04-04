@@ -1,0 +1,25 @@
+#include <iostream>
+
+using namespace std;
+struct Struktura{
+    struct Struktura *nastepna;              //pole w strukturze jest wskaznikiem na nastepna strukture
+};
+void wypisz(struct Struktura *poczatek,struct Struktura *koniec){            //metoda przyjmuje poczatek i koniec cyklu
+    cout<<poczatek<<" pokazuje "<<(*poczatek).nastepna<<endl;                //pokazanie struktury 
+    poczatek=(*poczatek).nastepna;                                           //przekazanie wartosci
+    if(poczatek!=koniec){                                                    //sprawdzenie warunku na rekurencje
+        wypisz(poczatek,koniec);                                             //rekurencja
+    }
+}
+int main ( ) {
+    auto *p1 = new Struktura;
+    auto *p2 = new Struktura;
+    auto *p3 = new Struktura;
+    auto *p4 = new Struktura;
+    (*p1).nastepna=p2;                                                       //wykonanie kółka Sladana
+    (*p2).nastepna=p3;
+    (*p3).nastepna=p4;
+    (*p4).nastepna=p1;
+    wypisz(p1,p1);
+    return 0 ;
+}
