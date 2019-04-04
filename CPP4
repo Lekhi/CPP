@@ -1,0 +1,116 @@
+#include <iostream>
+
+int mystrlen( char* wskaznik)
+{
+    int count=0;
+    do
+    {
+        count++;
+
+    }while(*wskaznik++);
+    return count-1;
+}
+bool isPalindrom(char* wskaznik)
+{
+    int length=0;
+    length=mystrlen(wskaznik);
+    char tab[length];
+    for(int i=0;i<length;i++)
+    {
+        tab[i]=*wskaznik++;
+    }
+    bool flag=true;
+    for(int i=0;i<length-1;i++)
+    {
+        if(tab[i]!=tab[length-1-i])
+        {
+            flag= false;
+        }
+    }
+    return flag;
+}
+
+
+int main() {
+    std::cout << "----------------ZAD1-------------------"<<std::endl;
+        std::cout<<mystrlen("witam")<<std::endl;
+
+    std::cout << "----------------ZAD2-------------------"<<std::endl;
+
+    std::cout<<std::boolalpha;
+    std::cout<<isPalindrom("ala")<<std::endl;
+    std::cout<<isPalindrom("kot")<<std::endl;
+    std::cout<<isPalindrom("kajak")<<std::endl;
+
+
+    std::cout << "----------------ZAD3-------------------"<<std::endl;
+    int a = 5;
+    int b = 8;
+    int *ptr = &a;
+    int &ref = b;
+    std:: cout << a <<" "<< b << " "<<*ptr<<" "<<&ref<<std::endl;
+
+    std::cout << "----------------ZAD4-------------------"<<std::endl;
+
+     static int tab [] = { 0, 2, 4, 5, 1};
+
+    int *ptr5 = &tab[0];
+    int *ptr6 = &tab[4];
+    int suma {};
+    for(int i = 0; i <= ptr6-ptr5; i++){
+        suma += tab[i];
+    }
+
+    std::cout<<"Suma: "<<suma<<std::endl;
+    
+    std::cout << "----------------ZAD5-------------------"<<std::endl;
+
+    char array1 [3] = {'a', 'b', 'c'};
+    char array2 [3] = {'e', 'f', 'g'};
+    char array3 [3] = {'d', 'j', 'z'};
+    char *array1_ptr  = array1;
+    char *array2_ptr  = array2;
+    char *array3_ptr = array3;
+
+    char * array_ptr_array [4] = { array1_ptr, array2_ptr, array3_ptr};
+
+    for(int i = 0; i < 4; i++ ){
+        std::cout<<array_ptr_array[i]<<std::endl;
+    }
+    
+    std::cout << "----------------ZAD6-------------------"<<std::endl;
+
+    char array1 [] = "rzeczy";
+    char array2 [] = "plansze";
+    char array3 [] =  "inne takie";
+    char *array1_ptr  = array1;
+    char *array2_ptr  = array2;
+    char *array3_ptr = array3;
+
+    char * array_ptr_array [4] = { array1_ptr, array2_ptr, array3_ptr};
+
+
+    char array4 [] = "no";
+    char *array4_ptr = array4;
+
+    for(int i = 2; i > 0 ; i--){
+        if(i>0){
+            array_ptr_array[i+1]= array_ptr_array[i];
+        }
+    }
+
+    array_ptr_array[1] = array4_ptr;
+
+    for(int i = 0; i < 4; i++){
+        std::cout<<array_ptr_array[i]<<std::endl;
+    }
+
+
+
+
+    return 0;
+}
+    
+    
+    
+    
