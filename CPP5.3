@@ -1,0 +1,34 @@
+void fun(char &ciag1, char *ciag2){
+    char *longestStart {};
+    int length{};
+
+    while(*ciag2){
+        if(*ciag2 == ciag1){                           //porownanie znakow
+            char* presentStart = ciag2;                //nowy poczatek podzbioru
+            while(*ciag2 == ciag1){                    //petla sprawdzajac podzbior
+                ciag2++;
+            }
+            if( (ciag2 - presentStart) > length){       //spadła z rowerka. porownanie dlugosci podzbioru z najdluzszym do tej pory
+                longestStart = presentStart;
+                length = ciag2 - longestStart;
+            }
+        }
+
+        ciag2++;                                        //inkrementacja na nastepny znak zeby sprobowac znowu wejsc na rower
+
+    }
+
+    cout<< *longestStart << " " << *(longestStart + length)<<endl;      //wypisanie pointerow
+
+}
+
+
+
+int main ( ) {
+
+    char *ciag1 {"alaaamaaakotaaa"};
+    char *ciag2 {"amaaak"};
+
+    fun(*ciag1, ciag2);
+
+}
