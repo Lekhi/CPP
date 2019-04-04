@@ -2,10 +2,10 @@
 
 using namespace std;
 struct Struktura{
-    struct Struktura *nastepna;              //pole w strukturze jest wskaznikiem na nastepna strukture
+     Struktura *nastepna;              //pole w strukturze jest wskaznikiem na nastepna strukture
 };
-void wypisz(struct Struktura *poczatek,struct Struktura *koniec){            //metoda przyjmuje poczatek i koniec cyklu
-    cout<<poczatek<<" pokazuje "<<(*poczatek).nastepna<<endl;                //pokazanie struktury 
+void wypisz( Struktura *poczatek, Struktura *koniec){            //metoda przyjmuje poczatek i koniec cyklu
+    cout<<poczatek<<" ------> "<<(*poczatek).nastepna<<endl;                //pokazanie struktury 
     poczatek=(*poczatek).nastepna;                                           //przekazanie wartosci
     if(poczatek!=koniec){                                                    //sprawdzenie warunku na rekurencje
         wypisz(poczatek,koniec);                                             //rekurencja
