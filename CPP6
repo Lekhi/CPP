@@ -1,3 +1,20 @@
+ 
+ auto mul1 ( int a,  int b)-> int{
+   return  a+b;
+}
+auto mul2 ( int a,  int b)-> int{
+    return  a-b;
+}
+auto mul3 ( int a,  int b)-> int{
+    return  a*b;
+}
+auto mul4 ( int a,  int b)-> int{
+    return  a+b;
+}
+ 
+ 
+ 
+ 
  int elementy[5][2] = {
                             { 1, 2 },
                             { 3, 4 },
