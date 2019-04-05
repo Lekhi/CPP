@@ -1,50 +1,106 @@
  
- auto mul1 ( int a,  int b)-> int{
-   return  a+b;
+#include <iostream>
+using namespace std;
+int mul (int num1, int num2){
+    return num1 * num2;
 }
-auto mul2 ( int a,  int b)-> int{
-    return  a-b;
+
+int dif(int num1, int num2){
+    return  num1/num2;
 }
-auto mul3 ( int a,  int b)-> int{
+
+int sum (int num1, int num2){
+    return num1 + num2;
+}
+
+int sub(int num1, int num2){
+    return num1 - num2;
+}
+
+void funCall(int el[][2], int pary, int(*func[])(int, int), int wskazniki)
+{
+    for(int i = 0; i < wskazniki; ++i)
+    {
+        for(int j = 0; j < pary; ++j)
+        {
+           cout<<func[i](el[j][0], el[j][1])<<endl;
+        }
+    }
+}
+
+
+//zadanie 4
+auto lambda1 ( int a,  int b)-> int{
     return  a*b;
 }
-auto mul4 ( int a,  int b)-> int{
+auto lambda2 ( int a,  int b)-> int{
+    return  a/b;
+}
+auto lambda3 ( int a,  int b)-> int{
     return  a+b;
 }
- 
- 
- 
- 
- int elementy[5][2] = {
-                            { 1, 2 },
-                            { 3, 4 },
-                            { 5, 6 },
-                            { 7, 8 },
-                            { 9, 10 }
-                         };
-    int ilel = 5;
-    int ilwsk = 4;
+auto lambda4 ( int a,  int b)-> int{
+    return  a-b;
+}
+int main() {
+    cout<<"-----------ZAD1----------"<<endl;
+    cout<<mul(2,2)<<endl;
+    cout<<dif(8,4)<<endl;
+    cout<<sum(2,2)<<endl;
+    cout<<sub(2,2)<<endl;
+
+    int (*funPtr1)(int, int);
+    int (*funPtr2)(int, int);
+    funPtr1 = &mul;
+    funPtr2 = &sum;
+
+    cout<<funPtr1(1, 2)<<endl;
+
+
+
+
+/*
+    cout<<"-----------ZAD2----------"<<endl;
+    int (*funPtr3)(int, int);
+    int (*funPtr4)(int, int);
+    funPtr3 = &dif;
+    funPtr4 = &sub;
+    typedef int ( *tabFunPtr [])(int , int);
+
+    tabFunPtr {funPtr1, funPtr2, funPtr3, funPtr4};
+
+
+    */
     int(*tabFunPtr[4]) (int x, int y);
     tabFunPtr[0] = mul;
     tabFunPtr[1] = dif;
     tabFunPtr[2] = sum;
     tabFunPtr[3] = sub;
-    funCall(elementy, ilel, tabFunPtr, ilwsk);
+
+    cout<<"-----------ZAD3----------"<<endl;
+
+    int elementy[5][2] = {
+            { 1, 2 },
+            { 3, 4 },
+            { 5, 6 },
+            { 7, 8 },
+            { 9, 10 }
+    };
+
+    int liczby = 10;
+    int wskazniki = 4;
+
+    funCall(elementy, liczby/2, tabFunPtr, wskazniki);
 
 
-  5
-6
-7
-8
-9
-10
-void funCall(int el[][2], int il, int(*func[])(int, int), int ilwsk)
-{
-    for(int i = 0; i < ilwsk; ++i)
-    {
-        for(int j = 0; j < il; ++j)
-        {
-            func[i](el[j][0], el[j][1]);
-        }
-    }
+
+    cout<<"-----------ZAD4----------"<<endl;
+    cout<<lambda1(2,2)<<endl;
+    cout<<lambda2(8,4)<<endl;
+    cout<<lambda3(2,2)<<endl;
+    cout<<lambda4(2,2)<<endl;
+
+
+
+    return 0;
 }
