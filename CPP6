@@ -1,0 +1,33 @@
+ int elementy[5][2] = {
+                            { 1, 2 },
+                            { 3, 4 },
+                            { 5, 6 },
+                            { 7, 8 },
+                            { 9, 10 }
+                         };
+    int ilel = 5;
+    int ilwsk = 4;
+    int(*tabFunPtr[4]) (int x, int y);
+    tabFunPtr[0] = mul;
+    tabFunPtr[1] = dif;
+    tabFunPtr[2] = sum;
+    tabFunPtr[3] = sub;
+    funCall(elementy, ilel, tabFunPtr, ilwsk);
+
+
+  5
+6
+7
+8
+9
+10
+void funCall(int el[][2], int il, int(*func[])(int, int), int ilwsk)
+{
+    for(int i = 0; i < ilwsk; ++i)
+    {
+        for(int j = 0; j < il; ++j)
+        {
+            func[i](el[j][0], el[j][1]);
+        }
+    }
+}
