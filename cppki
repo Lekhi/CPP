@@ -1,0 +1,77 @@
+#include <iostream>
+
+using namespace std;
+union eu{
+    int liczbaZ;
+    long double liczbaLD;
+};
+
+/*struct array{
+    int length1{};
+    int length2{};
+    int array[length1][length2];
+};*/
+
+class Czlowiek{
+    char* imie;
+    int wiek;
+    bool plec;
+public : Czlowiek(char* imie, int wiek, bool plec){
+        this->imie = imie;
+        this->plec = plec;
+        this->wiek = wiek;
+    }
+
+public : char* getImie(){
+        return this->imie;
+}
+};
+
+struct CzlowiekCzlowiek{
+    char* imie;
+    int wiek;
+    bool plec;
+};
+
+int main() {
+    typedef int tab [3][9];
+    tab tab1;
+    for(size_t i = 0;  i<3 ; i++){
+        for(size_t j = 0; j < 9; j++){
+            tab1[i][j] = j+1;
+        }
+    }
+
+    for(size_t i = 0; i < 3; ++i){
+        for(size_t j = 0; j < 9; j++){
+            cout<<tab1[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    cout<<"\n";
+    eu tusk;
+    tusk.liczbaZ = 3;
+    cout<< sizeof(tusk)<<endl;
+    cout<<tusk.liczbaZ<<endl;
+    cout<<tusk.liczbaLD<<endl;
+    tusk.liczbaLD = 3.31234243253453453;
+    cout<< sizeof(tusk)<<endl;
+    cout<<tusk.liczbaZ<<endl;
+    cout<<tusk.liczbaLD<<endl;
+
+    Czlowiek adam ("Adam", 13, 1);
+    CzlowiekCzlowiek ania {"Ania", 12, 0};
+    cout<<adam.getImie()<<endl;
+    cout<<ania.imie<<endl;
+    cout<<ania.wiek<<endl;
+
+
+
+
+
+
+
+
+
+    return 0;
+}
